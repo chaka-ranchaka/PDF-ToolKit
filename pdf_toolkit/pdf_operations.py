@@ -1,3 +1,5 @@
+import fitz
+
 from io import BytesIO
 from html import escape
 from pathlib import Path
@@ -8,7 +10,7 @@ from .file_utils import require_distinct_output, require_existing_file
 
 try:
     from PIL import Image
-except ImportError:  # pragma: no cover - dependency is declared in requirements.txt
+except ImportError:
     Image = None
 
 
@@ -155,6 +157,90 @@ def compress_pdf(input_path: Path, output: Path) -> int:
         writer.write(file)
     return len(reader.pages)
 
+def convert_pdf_color(
+    input_path: Path,
+    output: Path,
+    mode: str = "grayscale",
+    dpi: int = 150,
+) -> int:
+    if mode not in {"grayscale", "blackwhite"}:
+        raise ValueError(
+            "Mode warna tidak didukung. Gunakan 'grayscale' atau 'blackwhite'."
+        )
+
+    if not 72 <= dpi <= 300:
+        raise ValueError("DPI harus antara 72 dan 300.")
+
+    if Image is None:
+        raise RuntimeError(
+            "Pillow belum terpasang. Jalankan: pip install -r requirements.txt"
+        )
+
+    require_existing_file(input_path)
+    require_distinct_output(output, [input_path])
+
+    document = fitz.open(str(input_path))
+
+    try:
+        if document.page_count == 0:
+            raise ValueError("PDF tidak memiliki halaman.")
+
+        output_document = fitz.open()
+
+        try:
+            for page in document:
+                zoom = dpi / 72
+                matrix = fitz.Matrix(zoom, zoom)
+
+                pixmap = page.get_pixmap(
+                    matrix=matrix,
+                    alpha=False,
+                )
+
+                image = Image.frombytes(
+                    "RGB",
+                    [pixmap.width, pixmap.height],
+                    pixmap.samples,
+                )
+
+                if mode == "grayscale":
+                    converted_image = image.convert("L")
+                else:
+                    grayscale_image = image.convert("L")
+                    converted_image = grayscale_image.point(
+                        lambda pixel: 255 if pixel >= 128 else 0
+                    ).convert("1")
+
+                image_buffer = BytesIO()
+                converted_image.save(
+                    image_buffer,
+                    format="PNG",
+                )
+
+                new_page = output_document.new_page(
+                    width=page.rect.width,
+                    height=page.rect.height,
+                )
+
+                new_page.insert_image(
+                    new_page.rect,
+                    stream=image_buffer.getvalue(),
+                )
+
+                image.close()
+
+                if converted_image is not image:
+                    converted_image.close()
+
+            output_document.save(str(output))
+
+        finally:
+            output_document.close()
+
+        return document.page_count
+
+    finally:
+        document.close()
 
 def add_watermark(
     input_path: Path,
@@ -169,26 +255,52 @@ def add_watermark(
         raise ValueError("Teks watermark tidak boleh kosong.")
     require_existing_file(input_path)
     require_distinct_output(output, [input_path])
+
     try:
         from reportlab.pdfgen import canvas
     except ImportError as error:
-        raise RuntimeError("ReportLab belum terpasang. Jalankan: pip install -r requirements.txt") from error
-    if position not in {"Tengah", "Kiri atas", "Kanan atas", "Kiri bawah", "Kanan bawah"}:
+        raise RuntimeError(
+            "ReportLab belum terpasang. Jalankan: pip install -r requirements.txt"
+        ) from error
+
+    if position not in {
+        "Tengah",
+        "Kiri atas",
+        "Kanan atas",
+        "Kiri bawah",
+        "Kanan bawah",
+    }:
         raise ValueError("Posisi watermark tidak valid.")
+
     if not 0.05 <= opacity <= 1:
         raise ValueError("Opacity watermark harus antara 0.05 dan 1.")
+
     if not 8 <= size <= 120:
         raise ValueError("Ukuran watermark harus antara 8 dan 120.")
+
     if not -180 <= angle <= 180:
         raise ValueError("Rotasi watermark harus antara -180 dan 180.")
+
     reader = PdfReader(str(input_path))
     writer = PdfWriter()
+
     for page in reader.pages:
         stream = BytesIO()
-        canvas_writer = canvas.Canvas(stream, pagesize=(float(page.mediabox.width), float(page.mediabox.height)))
-        width, height = float(page.mediabox.width), float(page.mediabox.height)
+
+        canvas_writer = canvas.Canvas(
+            stream,
+            pagesize=(
+                float(page.mediabox.width),
+                float(page.mediabox.height),
+            ),
+        )
+
+        width = float(page.mediabox.width)
+        height = float(page.mediabox.height)
+
         canvas_writer.setFillAlpha(opacity)
         canvas_writer.setFont("Helvetica-Bold", size)
+
         anchors = {
             "Tengah": (width / 2, height / 2, "center"),
             "Kiri atas": (size, height - size * 1.5, "left"),
@@ -196,18 +308,41 @@ def add_watermark(
             "Kiri bawah": (size, size * 1.5, "left"),
             "Kanan bawah": (width - size, size * 1.5, "right"),
         }
+
         x, y, alignment = anchors[position]
+
         canvas_writer.saveState()
         canvas_writer.translate(x, y)
         canvas_writer.rotate(angle)
-        canvas_writer.drawCentredString(0, 0, text) if alignment == "center" else canvas_writer.drawString(0 if alignment == "left" else -canvas_writer.stringWidth(text, "Helvetica-Bold", size), 0, text)
+
+        if alignment == "center":
+            canvas_writer.drawCentredString(0, 0, text)
+        else:
+            canvas_writer.drawString(
+                0
+                if alignment == "left"
+                else -canvas_writer.stringWidth(
+                    text,
+                    "Helvetica-Bold",
+                    size,
+                ),
+                0,
+                text,
+            )
+
         canvas_writer.restoreState()
         canvas_writer.save()
+
         stream.seek(0)
-        page.merge_page(PdfReader(stream).pages[0])
-        writer.add_page(page)
+
+        watermark_page = PdfReader(stream).pages[0]
+
+        writer_page = writer.add_page(page)
+        writer_page.merge_page(watermark_page)
+
     with output.open("wb") as file:
         writer.write(file)
+
     return len(reader.pages)
 
 
