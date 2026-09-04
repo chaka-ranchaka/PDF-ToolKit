@@ -1,114 +1,135 @@
-# 📕 PDF ToolKit
+<div align="center">
 
-> A lightweight desktop PDF utility built with Python for merging, splitting, editing, converting, and managing PDF documents through a simple GUI and command-line interface.
+# ◈ PDF Toolkit
 
-<p align="center">
+### Fast, Private & Local PDF Processing Desktop Application
 
-![Python](https://img.shields.io/badge/Python-3.11%2B-3776AB?style=for-the-badge&logo=python&logoColor=white)
-![Tkinter](https://img.shields.io/badge/GUI-Tkinter-FF6F00?style=for-the-badge)
-![PyMuPDF](https://img.shields.io/badge/PDF-PyMuPDF-00599C?style=for-the-badge)
+A modern desktop application for processing PDF documents locally with a clean, futuristic interface.
 
-</p>
+[![Python](https://img.shields.io/badge/Python-3.11+-3776AB?style=flat-square&logo=python&logoColor=white)](https://www.python.org/)
+[![PyMuPDF](https://img.shields.io/badge/PyMuPDF-PDF%20Processing-0F4C81?style=flat-square)](https://pymupdf.readthedocs.io/)
+[![pypdf](https://img.shields.io/badge/pypdf-PDF%20Operations-8A2BE2?style=flat-square)](https://pypdf.readthedocs.io/)
+[![Pillow](https://img.shields.io/badge/Pillow-Image%20Processing-3776AB?style=flat-square)](https://python-pillow.org/)
+[![Tests](https://img.shields.io/badge/tests-102%20passing-success?style=flat-square)](#testing)
+[![CI](https://img.shields.io/github/actions/workflow/status/chaka-ranchaka/PDF-ToolKit/tests.yml?branch=main&style=flat-square&label=CI)](https://github.com/chaka-ranchaka/PDF-ToolKit/actions)
 
----
+<br>
 
-## ✨ Overview
+<img src="docs/logo_PDFToolkit.png" alt="PDF Toolkit Logo" width="420">
 
-**PDF ToolKit** is a desktop-based PDF utility developed with Python to simplify common PDF management tasks.
-
-The application provides multiple PDF operations in a single tool, including merging, splitting, removing pages, rotating pages, reordering pages, watermarking, compression, image extraction, and document conversion.
-
-PDF ToolKit supports both a **Graphical User Interface (GUI)** and a **Command-Line Interface (CLI)**, making it suitable for users who prefer either a visual workflow or terminal-based operations.
-
----
-
-## 🚀 Features
-
-### 📄 PDF Operations
-
-- 🔗 **Merge PDF**
-  - Combine multiple PDF documents into one file.
-  - Select and arrange PDF files before merging.
-
-- ✂️ **Split PDF**
-  - Extract selected pages from a PDF.
-  - Supports custom page ranges.
-
-- 🗑️ **Remove Pages**
-  - Remove unwanted pages from an existing PDF.
-
-- 🔄 **Rotate Pages**
-  - Rotate selected pages by different angles.
-
-- ↕️ **Reorder Pages**
-  - Rearrange PDF pages using a custom page order.
-
-### 🖼️ Image Operations
-
-- 🖼️ **Extract Images**
-  - Extract embedded images from PDF documents.
-
-- 📷 **Images to PDF**
-  - Convert multiple images into a single PDF document.
-
-### 💧 Watermark
-
-Add customizable text watermarks to PDF documents.
-
-Available customization options include:
-
-- Position
-- Font size
-- Opacity
-- Rotation
-
-### 🗜️ PDF Compression
-
-Reduce PDF file size through PDF stream compression.
-
-### 🔄 PDF Conversion
-
-Convert PDF documents into different formats:
-
-- TXT
-- HTML
-- DOCX
-
-### 👀 PDF Preview
-
-Preview PDF pages before performing an operation.
-
-### 🖥️ GUI & CLI
-
-PDF ToolKit provides two interfaces:
-
-**Graphical User Interface**
-
-A desktop interface designed for easy PDF management.
-
-**Command-Line Interface**
-
-Run PDF operations directly from the terminal.
+</div>
 
 ---
 
-## 🛠️ Tech Stack
+## 📖 About
 
-| Technology | Purpose |
+**PDF Toolkit** is a Python-based desktop application designed to provide a collection of essential PDF processing tools in a single, simple interface.
+
+Instead of relying on multiple online PDF services, PDF Toolkit performs document processing **locally on the user's computer**.
+
+This approach makes the application suitable for workflows where document privacy is important, while also keeping the processing experience fast and straightforward.
+
+The application combines PDF manipulation, image processing, document conversion, and a modern graphical interface into one lightweight toolkit.
+
+### Design Principles
+
+- 🔒 **Private** — Documents are processed locally.
+- ⚡ **Fast** — Designed for direct desktop processing.
+- 🖥️ **Simple** — Common PDF operations are accessible from one interface.
+- 🧩 **Modular** — PDF operations are separated from the GUI layer.
+- 🧪 **Tested** — Core functionality is covered by automated tests.
+- 🚀 **Extensible** — The architecture allows additional PDF features to be added later.
+
+---
+
+## ✨ Features
+
+PDF Toolkit currently provides the following operations:
+
+| Feature | Description |
 |---|---|
-| 🐍 Python 3.11+ | Core programming language |
-| 📕 pypdf | PDF manipulation |
-| 🔬 PyMuPDF | PDF rendering and processing |
-| 🖼️ Pillow | Image processing |
-| 📄 ReportLab | PDF generation and watermarking |
-| 📝 python-docx | DOCX generation |
-| 🖱️ tkinterdnd2 | Drag-and-drop support |
-| 🧪 pytest | Automated testing |
-| 🖥️ Tkinter | Desktop GUI |
+| 📎 Merge PDF | Combine multiple PDF files into a single document |
+| 📑 Merge Selected Pages | Combine selected pages from PDF documents |
+| ✂️ Split PDF | Split a PDF into multiple documents |
+| 🗑️ Remove Pages | Remove selected pages from a PDF |
+| 🔄 Rotate Pages | Rotate selected pages |
+| 🔀 Reorder Pages | Rearrange PDF page order |
+| 🖼️ Extract Images | Extract embedded image objects from PDF documents |
+| 📦 Compress PDF | Reduce PDF size using PDF optimization |
+| 🏷️ Watermark | Add text watermark with configurable settings |
+| 🖼️ Images to PDF | Convert multiple images into a PDF document |
+| 📄 Convert PDF | Convert PDF content into TXT, HTML, or DOCX |
+| 🎨 Change PDF Color | Convert pages into Original, Grayscale, or Black & White |
 
 ---
 
-## 📁 Project Structure
+## 🖥️ Interface
+
+PDF Toolkit uses a dark, minimalistic interface with a futuristic visual style.
+
+The main interface provides:
+
+- Drag & drop file input
+- Input file management
+- Operation selector
+- Dynamic operation options
+- Output file selection
+- PDF preview
+- Processing status
+- Settings panel
+- Local processing indicator
+
+<div align="center">
+
+<img src="docs/dashboard_PDFToolkit.png" alt="PDF Toolkit Dashboard" width="900">
+
+</div>
+
+---
+
+## 🎨 Color Conversion
+
+PDF Toolkit includes a dedicated PDF color conversion feature.
+
+Available modes:
+
+### Original
+
+Keeps the original PDF appearance.
+
+### Grayscale
+
+Converts every page into grayscale.
+
+### Black & White
+
+Converts every page into a binary black-and-white representation.
+
+The conversion resolution can also be configured through the DPI setting.
+
+Supported DPI range:
+
+```text
+72 - 300 DPI
+```
+
+> **Technical note:** Color conversion rasterizes each PDF page into an image before creating the output PDF. As a result, the converted document does not preserve the original PDF's internal vector/text object structure.
+
+---
+
+## 🖼️ Image Extraction
+
+PDF Toolkit can extract image objects embedded within PDF pages.
+
+The extracted images are saved separately from the original document.
+
+> **Current limitation:** Some PDFs store visual content as multiple separate image objects. In those cases, the extractor may return partial image regions such as fragments of photos, page corners, or other individual PDF image objects. The current implementation does not intelligently reconstruct or group these fragments into the original complete image.
+
+---
+
+## 🏗️ Project Architecture
+
+The project separates the graphical interface, command-line interface, file utilities, and PDF processing logic.
 
 ```text
 PDF-ToolKit/
@@ -123,220 +144,455 @@ PDF-ToolKit/
 ├── tests/
 │   └── test_pdf_operations.py
 │
+├── docs/
+│   ├── dashboard_PDFToolkit.png
+│   └── logo_PDFToolkit.png
+│
+├── .github/
+│   └── workflows/
+│       └── tests.yml
+│
 ├── main.py
 ├── requirements.txt
-├── README.md
-├── LICENSE
-└── .gitignore
+├── .gitignore
+└── README.md
 ```
+
+### Core Modules
+
+#### `pdf_toolkit/pdf_operations.py`
+
+Contains the main PDF processing functionality.
+
+Examples include:
+
+- PDF merging
+- PDF splitting
+- Page manipulation
+- Image extraction
+- PDF compression
+- Watermark generation
+- Document conversion
+- Image-to-PDF conversion
+- Color conversion
+
+#### `pdf_toolkit/file_utils.py`
+
+Provides reusable file validation and output handling utilities.
+
+#### `pdf_toolkit/gui.py`
+
+Contains the desktop graphical interface built with Tkinter.
+
+The GUI is responsible for:
+
+- File selection
+- Drag & drop
+- Operation selection
+- Dynamic settings
+- Preview
+- Output configuration
+- User interaction
+- Processing feedback
+
+#### `pdf_toolkit/cli.py`
+
+Provides command-line functionality for PDF operations.
+
+#### `tests/test_pdf_operations.py`
+
+Contains automated tests for the core PDF processing functionality.
 
 ---
 
-## 🧩 Architecture
+## 🛠️ Tech Stack
 
-The project uses a modular structure to separate the user interface, command-line interface, file utilities, and PDF processing logic.
+### Programming Language
 
-```text
-                         ┌─────────────────┐
-                         │     main.py     │
-                         │   Application   │
-                         │     Entry       │
-                         └────────┬────────┘
-                                  │
-                    ┌─────────────┴─────────────┐
-                    │                           │
-                    ▼                           ▼
-             ┌──────────────┐           ┌──────────────┐
-             │     GUI      │           │     CLI      │
-             │    gui.py    │           │    cli.py    │
-             └──────┬───────┘           └──────┬───────┘
-                    │                          │
-                    └──────────┬───────────────┘
-                               │
-                               ▼
-                    ┌─────────────────────┐
-                    │  PDF Operations     │
-                    │ pdf_operations.py   │
-                    └──────────┬──────────┘
-                               │
-                               ▼
-                    ┌─────────────────────┐
-                    │   File Utilities    │
-                    │   file_utils.py     │
-                    └─────────────────────┘
-```
+- 🐍 Python 3.11+
 
----
+### PDF Processing
 
-## 💻 Requirements
+- **pypdf**
+- **PyMuPDF**
 
-Before running PDF ToolKit, make sure you have:
+### Image Processing
 
-- Python **3.11 or newer**
-- pip
-- Tkinter support
+- **Pillow**
 
-You can verify your Python installation with:
+### Document Generation & Conversion
 
-```bash
-python --version
-```
+- **ReportLab**
+- **python-docx**
+
+### Desktop GUI
+
+- **Tkinter**
+- **tkinterdnd2**
+
+### Testing
+
+- **pytest**
+
+### Continuous Integration
+
+- **GitHub Actions**
 
 ---
 
-## ⚙️ Installation
+## 📦 Installation
 
-### 1. Clone the Repository
+### 1. Clone the repository
 
 ```bash
 git clone https://github.com/chaka-ranchaka/PDF-ToolKit.git
-```
-
-Navigate to the project directory:
-
-```bash
 cd PDF-ToolKit
 ```
 
-### 2. Create a Virtual Environment
+### 2. Create a virtual environment
 
-It is recommended to use a virtual environment.
+#### Windows
 
-```bash
+```powershell
 python -m venv .venv
 ```
 
-### 3. Activate the Virtual Environment
-
-#### Windows PowerShell
+Activate the environment:
 
 ```powershell
-.\.venv\Scripts\Activate.ps1
-```
-
-#### Windows Command Prompt
-
-```cmd
 .venv\Scripts\activate
 ```
 
-### 4. Install Dependencies
+#### Linux / macOS
 
 ```bash
-python -m pip install -r requirements.txt
+python3 -m venv .venv
+source .venv/bin/activate
+```
+
+### 3. Install dependencies
+
+```bash
+python -m pip install --upgrade pip
+pip install -r requirements.txt
 ```
 
 ---
 
-## ▶️ Usage
+## ▶️ Running the Application
 
-### Run the GUI
-
-Start PDF ToolKit with:
+From the project root:
 
 ```bash
 python main.py
 ```
 
-The graphical interface will open and allow you to select the desired PDF operation.
+The PDF Toolkit desktop application will launch.
 
-### Run the CLI
+---
 
-Launch the command-line interface with:
+## 🖱️ Basic Workflow
 
-```bash
-python main.py --cli
+The general workflow is:
+
+```text
+Select / Drop PDF
+        │
+        ▼
+Choose Operation
+        │
+        ▼
+Configure Options
+        │
+        ▼
+Choose Output
+        │
+        ▼
+Run Operation
+        │
+        ▼
+Generated PDF / Document
+```
+
+### Example
+
+1. Open PDF Toolkit.
+2. Drag one or more PDF files into the input area.
+3. Select an operation.
+4. Configure the required options.
+5. Select the output location.
+6. Click **Run Operation**.
+7. The processed file is generated locally.
+
+---
+
+## 🔧 Available Operations
+
+### Merge PDF
+
+Combines multiple PDF documents into a single PDF.
+
+```text
+Input:
+    document_1.pdf
+    document_2.pdf
+    document_3.pdf
+
+Output:
+    merged.pdf
 ```
 
 ---
 
-## 🧭 Page Range Format
+### Merge Selected Pages
 
-PDF ToolKit uses **1-based page numbering**.
+Allows selected pages from input documents to be combined.
 
-### Single Page
+Useful when only specific pages from several PDF documents are required.
 
-```text
-2
-```
+---
 
-Selects page 2.
+### Split PDF
 
-### Multiple Pages
+Splits a PDF into multiple PDF documents based on page ranges.
 
-```text
-2,5,8
-```
-
-Selects pages 2, 5, and 8.
-
-### Page Range
+Example:
 
 ```text
-2-5
+1-3
+4-6
+7-10
 ```
 
-Selects pages 2, 3, 4, and 5.
+---
 
-### Mixed Selection
+### Remove Pages
+
+Removes selected pages from a PDF document.
+
+Example:
 
 ```text
-2,5,8-10
+Remove:
+2, 5, 8
 ```
 
-Selects pages 2, 5, 8, 9, and 10.
+---
 
-### All Pages
+### Rotate Pages
+
+Rotates selected PDF pages.
+
+Useful for correcting page orientation.
+
+---
+
+### Reorder Pages
+
+Changes the order of pages in a PDF document.
+
+Example:
 
 ```text
-all
+Original:
+1 → 2 → 3 → 4
+
+New:
+3 → 1 → 4 → 2
 ```
 
-Selects all pages.
+---
+
+### Extract Images
+
+Extracts image objects contained inside PDF pages.
+
+The output consists of the extracted image files.
+
+---
+
+### Compress PDF
+
+Attempts to reduce PDF file size while maintaining a usable document.
+
+---
+
+### Watermark
+
+Adds a text watermark to PDF pages.
+
+The watermark functionality supports configurable parameters such as:
+
+- Text
+- Position
+- Opacity
+- Font size
+- Rotation angle
+
+---
+
+### Images to PDF
+
+Combines image files into a PDF document.
+
+Useful for converting scanned pages, photos, or image collections into a single PDF.
+
+---
+
+### Convert PDF
+
+Converts PDF content into several document formats.
+
+Supported formats:
+
+```text
+TXT
+HTML
+DOCX
+```
+
+---
+
+### Change PDF Color
+
+Converts PDF pages into:
+
+```text
+Original
+Grayscale
+Black & White
+```
+
+DPI can be configured between:
+
+```text
+72 - 300 DPI
+```
 
 ---
 
 ## 🧪 Testing
 
-PDF ToolKit uses `pytest` for automated testing.
+PDF Toolkit uses **pytest** for automated testing.
 
-Run the test suite with:
+The test suite covers core functionality including:
+
+- Page range parsing
+- PDF merging
+- PDF splitting
+- Page removal
+- Page rotation
+- Page reordering
+- Image extraction
+- PDF compression
+- Watermark generation
+- TXT conversion
+- HTML conversion
+- DOCX conversion
+- Images to PDF
+- PDF color conversion
+- File validation
+- Temporary file handling
+- Output validation
+
+Run the complete test suite:
 
 ```bash
-pytest
+python -m pytest -v
 ```
 
-You can also use:
+For stricter deprecation checking:
 
 ```bash
-python -m pytest
+python -m pytest -W error::DeprecationWarning -v
 ```
+
+Current test coverage:
+
+```text
+102 tests
+```
+
+---
+
+## 🤖 Continuous Integration
+
+The repository uses **GitHub Actions** to automatically run the test suite.
+
+The CI workflow is located at:
+
+```text
+.github/workflows/tests.yml
+```
+
+The workflow runs when changes are pushed to or submitted through pull requests targeting:
+
+```text
+main
+master
+```
+
+The CI pipeline performs:
+
+```text
+Checkout Repository
+        │
+        ▼
+Setup Python 3.11
+        │
+        ▼
+Install Dependencies
+        │
+        ▼
+Run pytest
+        │
+        ▼
+Pass / Fail
+```
+
+This helps ensure that changes pushed to the repository do not unintentionally break existing functionality.
 
 ---
 
 ## 🔐 Privacy
 
-PDF ToolKit is designed as a local desktop application.
+PDF Toolkit is designed around **local document processing**.
 
-PDF processing is performed locally on the user's computer. The application does not require users to upload their PDF documents to an external web service for normal PDF operations.
+Documents are processed on the local machine rather than being uploaded to an external PDF processing service.
 
-This makes the tool suitable for workflows where keeping documents locally is preferred.
+This makes the application useful for documents that users prefer to keep on their own device.
+
+> Local processing does not automatically guarantee complete system-level privacy. Temporary files, operating system caches, backups, or other software may still affect how data is stored on a user's computer.
 
 ---
 
-## ⚠️ Limitations
+## 📁 Requirements
 
-PDF ToolKit focuses on common PDF management operations rather than advanced commercial PDF editing.
+The current runtime dependencies are:
 
-Current limitations may include:
+```text
+pypdf>=6.0
+PyMuPDF>=1.24
+Pillow>=10.0
+reportlab>=4.0
+python-docx>=1.1
+tkinterdnd2>=0.4
+pytest>=8.0
+```
 
-- No advanced PDF text editing.
-- No OCR functionality for scanned documents.
-- No advanced PDF annotation system.
-- No password management interface.
-- PDF-to-text conversion depends on extractable text.
-- Scanned PDFs may require OCR before text can be extracted.
-- Advanced document layout preservation may vary depending on the source PDF.
+---
+
+## 🚧 Current Limitations
+
+PDF Toolkit is still under active development.
+
+Current limitations include:
+
+- Image extraction may return individual image fragments when a PDF stores visual content as multiple image objects.
+- Image extraction does not currently reconstruct fragmented images into their original complete form.
+- Color conversion rasterizes PDF pages, so original vector/text structures are not preserved in converted output.
+- Advanced PDF features such as digital signatures, forms, annotations, and complex interactive elements may not be preserved by every processing operation.
+- Some PDF documents may behave differently depending on how their internal structure was generated.
 
 ---
 
@@ -344,98 +600,177 @@ Current limitations may include:
 
 Future improvements may include:
 
-- [ ] 🔒 PDF password protection
-- [ ] 🔓 Password-protected PDF support
-- [ ] 🔍 OCR for scanned PDFs
-- [ ] ✏️ PDF text editing
-- [ ] 📝 PDF annotation tools
-- [ ] 🖼️ Image insertion
-- [ ] 📑 Batch PDF processing
-- [ ] 📊 Improved progress indicators
-- [ ] 🧪 Expanded automated test coverage
-- [ ] 📦 Standalone executable release
-- [ ] 🎨 Improved GUI design
-- [ ] 🌐 Multi-language interface
+### PDF Processing
+
+- [ ] Advanced PDF optimization
+- [ ] Better image extraction and reconstruction
+- [ ] PDF metadata editor
+- [ ] Page thumbnails
+- [ ] Page-level preview
+- [ ] PDF encryption and password protection
+- [ ] PDF unlock functionality for supported documents
+- [ ] Header and footer tools
+
+### User Interface
+
+- [ ] Improved page preview
+- [ ] Drag-to-reorder pages
+- [ ] Operation history
+- [ ] Progress bar for long operations
+- [ ] More detailed processing logs
+- [ ] Keyboard shortcuts
+- [ ] Improved responsive layout
+
+### Distribution
+
+- [ ] Windows standalone `.exe`
+- [ ] Application installer
+- [ ] Portable version
+- [ ] Release automation
+
+### Developer Experience
+
+- [x] Automated tests
+- [x] GitHub Actions CI
+- [x] Modular PDF processing backend
+- [ ] Automated release workflow
+- [ ] Expanded test coverage
 
 ---
 
-## 🤝 Contributing
+## 💡 Why PDF Toolkit?
 
-Contributions, suggestions, and improvements are welcome.
+There are many online PDF tools available, but they often require users to upload their documents to a remote service.
 
-### 1. Fork the Repository
+PDF Toolkit takes a different approach:
 
-Create your own fork of this project.
+```text
+              ONLINE PDF TOOLS
 
-### 2. Clone Your Fork
-
-```bash
-git clone https://github.com/your-username/PDF-ToolKit.git
-cd PDF-ToolKit
+     Document
+         │
+         ▼
+    Upload to Server
+         │
+         ▼
+     Processing
+         │
+         ▼
+      Download
 ```
 
-### 3. Create a Feature Branch
+PDF Toolkit:
 
-```bash
-git checkout -b feature/your-feature
+```text
+              PDF TOOLKIT
+
+     Document
+         │
+         ▼
+   Local Processing
+         │
+         ▼
+     Output File
 ```
 
-### 4. Make Your Changes
+The goal is simple:
 
-Implement your feature or fix.
+> **Useful PDF tools without requiring your documents to leave your computer.**
 
-### 5. Run the Tests
+---
 
-```bash
-pytest
+## 🎯 Project Goals
+
+PDF Toolkit was developed as a practical exploration of:
+
+- Python desktop application development
+- PDF document processing
+- Image processing
+- GUI development
+- Software modularity
+- Automated testing
+- Continuous Integration
+- Local-first application design
+
+The project also serves as a foundation that can be extended into a more complete desktop document-processing application.
+
+---
+
+## 🧠 What This Project Demonstrates
+
+This project demonstrates experience with several areas of software development:
+
+```text
+Python
+  │
+  ├── Desktop GUI
+  │
+  ├── PDF Processing
+  │
+  ├── Image Processing
+  │
+  ├── Document Conversion
+  │
+  ├── Automated Testing
+  │
+  ├── Error Handling
+  │
+  └── Continuous Integration
 ```
 
-### 6. Commit Your Changes
+---
 
-```bash
-git add .
-git commit -m "Add: your feature"
-```
+## 📸 Screenshots
 
-### 7. Push Your Branch
+### Main Dashboard
 
-```bash
-git push origin feature/your-feature
-```
+<div align="center">
 
-### 8. Open a Pull Request
+<img src="docs/dashboard_PDFToolkit.png" alt="PDF Toolkit Main Dashboard" width="900">
 
-Create a Pull Request from your branch to the main repository.
+</div>
+
+---
+
+## 📌 Project Status
+
+**Development Status:** 🟢 Active Development
+
+The core PDF processing functionality is implemented and covered by automated tests. The graphical interface is also under continuous refinement as new features are introduced.
 
 ---
 
 ## 👨‍💻 Author
 
-### Chaka Ranchaka
+<div align="center">
 
-Electrical Engineering student interested in:
+### Muhammad Naufal Al Ghazali
 
-- 💻 Software Development
-- 🤖 Artificial Intelligence & Computer Vision
-- 🔌 Embedded Systems & IoT
-- 📱 Flutter Development
-- 🌐 Web Development
-- 🧠 Exploring new technologies
+Electrical Engineering Student  
+Interested in Software Development, AI, Computer Vision, Embedded Systems, IoT, Flutter, and Web Development.
 
-GitHub: [@chaka-ranchaka](https://github.com/chaka-ranchaka)
+<br>
 
----
+[![GitHub](https://img.shields.io/badge/GitHub-chaka--ranchaka-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/chaka-ranchaka)
 
-## ⭐ Support
-
-If you find **PDF ToolKit** useful, consider giving the repository a ⭐ on GitHub.
-
-Your support helps the project grow and motivates further development.
+</div>
 
 ---
 
-<p align="center">
+## 📄 License
 
-Built with 🐍 Python and curiosity.
+No license has been specified for this repository yet.
 
-</p>
+If this project is intended to be publicly reused, a license can be added in a future release.
+
+---
+
+<div align="center">
+
+### ◈ PDF Toolkit
+
+**Local document processing · Fast · Private**
+
+Built with Python 🐍
+
+</div>
