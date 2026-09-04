@@ -13,10 +13,6 @@ A modern desktop application for processing PDF documents locally with a clean, 
 [![Tests](https://img.shields.io/badge/tests-102%20passing-success?style=flat-square)](#testing)
 [![CI](https://img.shields.io/github/actions/workflow/status/chaka-ranchaka/PDF-ToolKit/tests.yml?branch=main&style=flat-square&label=CI)](https://github.com/chaka-ranchaka/PDF-ToolKit/actions)
 
-<br>
-
-<img src="docs/logo_PDFToolkit.png" alt="PDF Toolkit Logo" width="420">
-
 </div>
 
 ---
