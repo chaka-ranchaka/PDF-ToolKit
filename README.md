@@ -7,7 +7,6 @@
 ![Python](https://img.shields.io/badge/Python-3.11%2B-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![Tkinter](https://img.shields.io/badge/GUI-Tkinter-FF6F00?style=for-the-badge)
 ![PyMuPDF](https://img.shields.io/badge/PDF-PyMuPDF-00599C?style=for-the-badge)
-![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
 
 </p>
 
@@ -407,14 +406,6 @@ git push origin feature/your-feature
 ### 8. Open a Pull Request
 
 Create a Pull Request from your branch to the main repository.
-
----
-
-## 📄 License
-
-This project is licensed under the **MIT License**.
-
-See the [LICENSE](LICENSE) file for more information.
 
 ---
 
